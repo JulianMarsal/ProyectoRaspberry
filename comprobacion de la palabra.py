@@ -24,7 +24,7 @@ def ingreso_palabra(palabra,tipo, tags={'NN':'ustantiv','VB':'erb','JJ':'djetiv'
                 if tags[var] in texto:
                     tag=var
                     break
-            if tags[var] in texto:
+            if tags[var] in texto:           #
                 tipo[tag].append(tipo_pat[0][0])
                 for x in range(len(secciones)):
                     if tags[tag] in secciones[x].title:
