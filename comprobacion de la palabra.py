@@ -57,3 +57,38 @@ print(tipo)
 ##        verbos.append(tipo_pat[0][0])
 ##    elif tipo_pat[0][1][0:2]=='JJ'and 'Adjetivo' in texto:
 ##        adjetivos.append(tipo_pat[0][0])    
+
+
+
+
+
+
+
+
+from pattern.es import lexicon, spelling, tag
+
+def clasificar(palabra):
+    existe = False
+        
+	if tag(tokenize=True, encoding='utf-8', tagset = 'UNIVERSAL') == 'JJ':
+        True
+	if (tag(tokenize=True, encoding='utf-8') == 'JJ':
+        True
+    return = existe
+
+
+def comprobar_adjetivo(palabra):    
+    es_adjetivo = False    
+    if not palabra in spelling:
+        if not palabra in lexicon:
+            print('No se encuentra en pattern.es')
+        else:
+            #print('La encontró en lexicon')
+            if clasificar(palabra):
+                es_adjetivo = True
+    else:
+        #print('La encontró en spelling')
+        if clasificar(palabra):
+            es_adjetivo = True
+    
+    return = es_adjetivo
