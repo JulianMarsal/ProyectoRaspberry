@@ -9,28 +9,39 @@ def actualizar_archivo(objeto):
         archivo = open('configuracion.json','w')
         json_datos=json.dumps(objeto)
         archivo.write(json_datos)
-
-
+def leer_configuracion():
+        archivo = open ('configuracion.json','r')
+        json_datos=json.load(archivo)
+        return json_datos
+def conseguir_color(clave,config):
+    dic_colores={'blue':'azul','green':'verde','red':'rojo','yellow':'amarillo','violet':'violeta','orange':'naranja','lightblue':'celeste','indigo':'indigo'}
+    return dic_colores[config[clave]]
+def conseguir_booleano(valor, config):
+        OK=False
+        if config==valor:
+                OK=True
+        return OK        
+config=leer_configuracion()[0]
 lista_cantidad=[]
 arcoiris=['azul','verde','rojo','amarillo','violeta','indigo','naranja','celeste']
 oficinas=['0','1']
 lista_invertir= ['Si','No']
 for var in range(11):
     lista_cantidad.append(str(var))
-layout=[[sg.Text('Orientacion:'),sg.Radio('Horizontal',"selector1", default=True,background_color='#ffe4b5'),sg.Radio('Vertical', "selector1",background_color='#ffe4b5')],
-        [sg.Text('Ayudas:'),sg.Combo(['Ninguna','Definición','Palabras','Ambas'],default_value='Ninguna')],
+layout=[[sg.Text('Orientacion:'),sg.Radio('Horizontal',"selector1", default=conseguir_booleano('Horizontal',config['orientacion']),background_color='#ffe4b5'),sg.Radio('Vertical', "selector1",default=conseguir_booleano('Vertical',config['orientacion']),background_color='#ffe4b5')],
+        [sg.Text('Ayudas:'),sg.Combo(['Ninguna','Definición','Palabras','Ambas'],default_value=config["ayuda"])],
         [sg.Text('Cantidad de Palabras:')],
-        [sg.Text('Verbos'),sg.Combo(lista_cantidad,default_value='0'),
-         sg.Text('Adjetivos'),sg.Combo(lista_cantidad,default_value='0'),
-         sg.Text('Sustantivos'),sg.Combo(lista_cantidad,default_value='0')],
-        [sg.Text('Letras de la sopa'),sg.Radio('Mayuscula','selector2',default=True,background_color='#ffe4b5'),sg.Radio('Minuscula','selector2',background_color='#ffe4b5')],
-        [sg.Text('Palabras invertidas'),sg.Combo(lista_invertir,default_value='No')],
+        [sg.Text('Verbos'),sg.Combo(lista_cantidad,default_value=str(config["cant_palabras"]["VB"])),
+         sg.Text('Adjetivos'),sg.Combo(lista_cantidad,default_value=str(config["cant_palabras"]["JJ"])),
+         sg.Text('Sustantivos'),sg.Combo(lista_cantidad,default_value=str(config["cant_palabras"]["NN"]))],
+        [sg.Text('Letras de la sopa'),sg.Radio('Mayuscula','selector2',default=conseguir_booleano('Mayuscula',config['tipo_letra']),background_color='#ffe4b5'),sg.Radio('Minuscula','selector2',default=conseguir_booleano('Minuscula',config['tipo_letra']),background_color='#ffe4b5')],
+        [sg.Text('Palabras invertidas'),sg.Combo(lista_invertir,default_value=config["invertir"])],
         [sg.Text('Colores:')],
-        [sg.Text('Verbos:'),sg.Combo(arcoiris,default_value='verde'),
-         sg.Text('Adjetivos:'),sg.Combo(arcoiris,default_value='rojo'),
-         sg.Text('Sustantivos:'),sg.Combo(arcoiris,default_value='azul')],
-        [sg.Text('Oficina'),sg.Combo(oficinas,default_value='0'),sg.Button('Agregar Oficina')],
-        [sg.Button('Aplicar')]]
+        [sg.Text('Verbos:'),sg.Combo(arcoiris,default_value=conseguir_color('VB',config['colores'])),
+         sg.Text('Adjetivos:'),sg.Combo(arcoiris,default_value=conseguir_color('JJ',config['colores'])),
+         sg.Text('Sustantivos:'),sg.Combo(arcoiris,default_value=conseguir_color('NN',config['colores']))],
+        [sg.Text('Oficina'),sg.Combo(oficinas,default_value=str(config["oficina"])),sg.Button('Agregar Oficina')],
+        [sg.Button('Aplicar'),sg.Button('Cancelar')]]
 window=sg.Window('Configuraciones',font='Fixedsys',
                  auto_size_buttons=True).Layout(layout)
 def comparar_colores(color1,color2,color3):
@@ -72,7 +83,7 @@ def Main():
                 event,values=window_ventana.Read()
                 if event is None or event=='OK':
                     window_ventana.Close()                
-        elif event == None:
+        elif event == None or event=='Cancelar':
                  break
     window.Close()
 	
