@@ -30,7 +30,6 @@ def opciones():
     while True:
         event,values=window.Read()
         if event == None or event=='Aceptar':
-                window.Close()
                 break
         elif event =='Agregar oficina':
             ultima_oficina=oficinas[-1][-1]
@@ -42,15 +41,16 @@ def opciones():
             archivo.write(objeto)	
             archivo.close
             oficinas.append(nueva_oficina)
-            window.FindElement('combo_oficina').Update(values=oficinas)    
+            window.FindElement('combo_oficina').Update(values=oficinas) 
+    window.Close()		
     return values['combo_oficina']	    
 def main():
     oficina=opciones()
     while True:
-        time.sleep(60)  #Cada 1 min. Para probarlo, bajarle la cantidad
         datos= leer_datos()
         print('Datos leídos')
-        guardar(datos,oficina)	#ver tema de la oficina
+        guardar(datos,oficina)	
+	time.sleep(60)  #Cada 1 min. Para probarlo, bajarle la cantidad
     
 if __name__ == "__main__":
     main()
