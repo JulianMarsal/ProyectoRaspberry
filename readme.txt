@@ -1,4 +1,4 @@
-﻿Primera entrega trabajo final 
+Segunda entrega trabajo final 
 Seminario de lenguajes Python 2019
 
 Integrantes: Hoffer Carolina, Garcia Dolores, Marsal Julián
