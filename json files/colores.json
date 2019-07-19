@@ -1,0 +1,11 @@
+{
+    "COLOR_FONDO": "#9FD9DA",
+    "COLOR_BOTON": [
+        "white",
+        "#4E8498"
+    ],
+    "COLOR_TEXTO": [
+        "white",
+        "#9FD9DA"
+    ]
+}

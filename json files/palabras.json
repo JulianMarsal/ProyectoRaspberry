@@ -1,0 +1,46 @@
+[
+    {
+        "VB": {
+            "correr": [
+                "1Desplazarse r\u00e1pidamente sobre el suelo mediante el movimiento alternado de las piernas o de las patas.2Desplazarse r\u00e1pidamente de cualquier otra forma, un veh\u00edculo, cosa o ser."
+            ],
+            "saltar": [
+                "1Impulsarse o lanzarse al aire.2Lanzarse al vacio.3Acci\u00f3n de un objeto que se separa r\u00e1pidamente de un lugar y se detiene en otro.4Surgir de repente."
+            ],
+            "asust\u00f3": [
+                "1Tercera persona del singular (ella, \u00e9l, ello; usted, 2.\u00aa pers.) del pret\u00e9rito perfecto simple de indicativo de asustar o de asustarse."
+            ],
+            "asusto": [
+                "1Primera persona del singular (yo) del presente de indicativo de asustar o de asustarse."
+            ]
+        },
+        "JJ": {
+            "feo": [
+                "1Que carece de belleza o hermosura. [1]"
+            ],
+            "parcial": [
+                "Algo que es mitad de otro."
+            ]
+        },
+        "NN": {
+            "mesa": [
+                "1 Mobiliario.Mueble que consta de una superficie plana y horizontal sostenida por patas."
+            ],
+            "manzana": [
+                "1 Bot\u00e1nica, Gastronom\u00eda.Fruta comestible del manzano (Malus domestica), un pomo crujiente, de intenso y agradable aroma y sabor de dulce a sub\u00e1cido, recubierto de una piel delgada de color verde, rojo o amarillo."
+            ],
+            "termo": [
+                "1Recipiente con doble pared entre las cuales hay vac\u00edo con el objetivo de ser lo mas adiab\u00e1tico posible."
+            ],
+            "auto": [
+                "1 Transporte.Veh\u00edculo de cuatro ruedas, cerrado, con asientos, propulsado por un motor de combusti\u00f3n o el\u00e9ctrico, destinado al transporte de una a cinco personas."
+            ],
+            "membrillo": [
+                "1 Bot\u00e1nica.(Cydonia oblonga) \u00c1rbol de la familia de las ros\u00e1ceas originario del C\u00e1ucaso y cultivado por sus frutos comestibles. Es una planta con hojas simples, alternas y pubescentes, las flores tienen cinco p\u00e9talos y el fruto es un pomo."
+            ],
+            "bote": [
+                "1 N\u00e1utica y Transporte.Embarcaci\u00f3n peque\u00f1a, sin cubierta, a remos y con tablones como asientos."
+            ]
+        }
+    }
+]

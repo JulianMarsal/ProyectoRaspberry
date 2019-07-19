@@ -1,0 +1,19 @@
+[
+    {
+        "orientacion": "Vertical",
+        "ayuda": "Ambas",
+        "cant_palabras": {
+            "VB": 1,
+            "JJ": 2,
+            "NN": 1
+        },
+        "tipo_letra": "Mayuscula",
+        "invertir": "Si",
+        "colores": {
+            "VB": "indigo",
+            "JJ": "violet",
+            "NN": "blue"
+        },
+        "oficina": "oficina1"
+    }
+]
