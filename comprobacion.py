@@ -25,11 +25,11 @@ def mostrar_reporte():
     lista_reporte+=(reporte.read()+'\n\n'+ '-------------------------------------------------------------------------------------------------------------------------------------------------' + '-------------------------------------------------------------------------------------------------------------------------------------------------------'+'\n\n\n')
     lista_reporte=lista_reporte.replace("No existe la palabra en el wiktionario. Se tomara la clasificacion de pattern si existe.", " ")
     reporte.close()
-# Descomentar en caso de querer incluir el reporte de palabras inexistentes en ambos buscadores
-#   reporte= open('report files/reporte_wikcionario_pattern','r')
-#   lista_reporte+=(reporte.read()+'\n\n'+ '-------------------------------------------------------------------------------------------------------------------------------------------------' + '-------------------------------------------------------------------------------------------------------------------------------------------------------'+'\n\n\n')
-#   lista_reporte=lista_reporte.replace("La palabra no se encuentra en wikcionario y no clasifica como verbo, adjetivo o sustantivo en pattern.", " ")
-#   reporte.close()      
+# Comentar en caso de querer no incluir el reporte de palabras inexistentes en ambos buscadores
+    reporte= open('report files/reporte_wikcionario_pattern','r')
+    lista_reporte+=(reporte.read()+'\n\n'+ '-------------------------------------------------------------------------------------------------------------------------------------------------' + '-------------------------------------------------------------------------------------------------------------------------------------------------------'+'\n\n\n')
+    lista_reporte=lista_reporte.replace("La palabra no se encuentra en wikcionario y no clasifica como verbo, adjetivo o sustantivo en pattern.", " ")
+    reporte.close()      
     layout=[[sg.Multiline(lista_reporte,size=(85,15),disabled=True)],[sg.Button('Cerrar')]]
     window=sg.Window('report files/reporte').Layout(layout)
     event,values=window.Read()
