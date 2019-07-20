@@ -15,6 +15,26 @@ def mostrar_palabras():
     window=sg.Window('json files/Palabras').Layout(layout)
     event,values=window.Read()
     window.Close()    
+
+def mostrar_reporte():
+    '''Abre los diferentes archivos.txt de reporte y los junta en un multiline quitando el contenido redundante'''
+    reporte= open('report files/reporte_wikcionario','r')
+    lista_reporte=(reporte.read()+'\n\n'+ '-------------------------------------------------------------------------------------------------------------------------------------------------' + '-------------------------------------------------------------------------------------------------------------------------------------------------------'+'\n\n\n') 
+    reporte.close() 
+    reporte= open('report files/reporte_pattern','r')
+    lista_reporte+=(reporte.read()+'\n\n'+ '-------------------------------------------------------------------------------------------------------------------------------------------------' + '-------------------------------------------------------------------------------------------------------------------------------------------------------'+'\n\n\n')
+    lista_reporte=lista_reporte.replace("No existe la palabra en el wiktionario. Se tomara la clasificacion de pattern si existe.", " ")
+    reporte.close()
+# Descomentar en caso de querer incluir el reporte de palabras inexistentes en ambos buscadores
+#   reporte= open('report files/reporte_wikcionario_pattern','r')
+#   lista_reporte+=(reporte.read()+'\n\n'+ '-------------------------------------------------------------------------------------------------------------------------------------------------' + '-------------------------------------------------------------------------------------------------------------------------------------------------------'+'\n\n\n')
+#   lista_reporte=lista_reporte.replace("La palabra no se encuentra en wikcionario y no clasifica como verbo, adjetivo o sustantivo en pattern.", " ")
+#   reporte.close()      
+    layout=[[sg.Multiline(lista_reporte,size=(85,15),disabled=True)],[sg.Button('Cerrar')]]
+    window=sg.Window('report files/reporte').Layout(layout)
+    event,values=window.Read()
+    window.Close()
+
 def actualizar_archivoPal(objeto):
     '''Recibe un diccionario con datos de palabras y sus definiciones y actualiza el archivo palabras.json'''
     datos_archivo=leer_archivo('json files/palabras.json')
@@ -25,6 +45,7 @@ def actualizar_archivoPal(objeto):
     archivo=open('json files/palabras.json','w')
     archivo.write(nuevos)
     archivo.close
+
 def eliminar(palabra):
     '''Recibe una palabra y la elimina del archivo palabras.json'''
     palabra=palabra.lower()    
@@ -176,7 +197,7 @@ def main():
         [sg.Text('Ingrese la palabra a agregar/eliminar. Puede tardar en comprobar la palabra en internet.')],
         [sg.Input()],
         [sg.Text('<<Una palabra por vez. Con acentuación incluída>>.<<Máximo de longitud:10 >> ', text_color='red')],
-        [sg.Button('Agregar'),sg.Button('Eliminar'),sg.Button('Mostrar Palabras')],
+        [sg.Button('Agregar'),sg.Button('Eliminar'),sg.Button('Mostrar Palabras'),sg.Button('Mostrar Reporte')],
         [sg.Button('Terminar')]]
     window= sg.Window('Ingreso de palabras').Layout(layout)
     while True:
@@ -188,11 +209,15 @@ def main():
             tipo=verificacion_palabra(values[0],jsonObj)
             actualizar_archivoPal(jsonObj)
         elif event=='Eliminar':
-            eliminar(values[0])    
+            eliminar(values[0]) 
         elif event == 'Mostrar Palabras':
-            mostrar_palabras()
+            mostrar_palabras()   
+        elif event == 'Mostrar Reporte':
+            mostrar_reporte()
+            
     window.Close()  
     
     
 if __name__=='__main__':
     main()
+
